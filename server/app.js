@@ -1,12 +1,22 @@
 const express = require('express');
 const app = express();
 const PORT = 5000;
+const mongoose = require('mongoose');
+const { URI } = require('./keys');
 
-app.get('/',(req,res) => {
+require('./models/user');
 
-    res.send("Hejg");
+app.use(express.json());
+app.use(require('./routes/auth'));
 
+mongoose.connect(URI, {useNewUrlParser: true, useUnifiedTopology: true } );
+mongoose.connection.on('connected', () => {
+    console.log("Connected");
 });
+mongoose.connection.on('error', (err)=>{
+    console.log(err);
+});
+
 
 app.listen(PORT,() => {
     console.log("Server is running ",PORT);
