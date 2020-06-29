@@ -10,6 +10,7 @@ a{
 
 .mycard{
   margin-top: 70px;
+  /* background-color:rgb(51, 168, 162); */
 }
 
 .auth-card{
@@ -19,9 +20,9 @@ a{
   margin: 10px auto;
 }
 
-.btn{
+/* .btn{
   margin-top: 40px;
-}
+} */
 
 .gallery{
   display: flex;
@@ -31,4 +32,11 @@ a{
 
 .item{
   width: 30%;
+}
+
+
+.home-card{
+  max-width: 500px;
+  height: max-content;
+  margin: 26px auto;
 }
