@@ -10,10 +10,10 @@ const Signup = () => {
     const [email,setEmail] = useState("");
 
     const PostData = () => {
-        // if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
-        //     M.toast({html: 'Fill data correctly!'});
-        //     return;
-        // }
+        if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
+            M.toast({html: "Invalid Email!"});
+            return;
+        }
         fetch("/signup",{
             method:"post",
             headers:{
@@ -33,7 +33,9 @@ const Signup = () => {
                 M.toast({html: 'SignUp Successful!'});
                 history.push('/signin');
             }
-        })
+        }).catch(err => {
+            console.log(err);
+        });
     }
 
     return(
