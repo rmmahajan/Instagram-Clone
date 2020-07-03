@@ -28,6 +28,8 @@ const Signin = () => {
                 M.toast({html: 'Fill the data!'});
             }
             else{
+                localStorage.setItem("jwt",data.token);
+                localStorage.setItem("user",JSON.stringify(data.user));
                 M.toast({html: 'SignIn Successful!'});
                 history.push('/');
             }
@@ -38,7 +40,7 @@ const Signin = () => {
 
     return(
         <div className="mycard">
-            <div class="card auth-card">
+            <div className="card auth-card">
               <h2>Instagram</h2>
               <input 
               type="text"
